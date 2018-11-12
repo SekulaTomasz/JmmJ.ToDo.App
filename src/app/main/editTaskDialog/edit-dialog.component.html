@@ -1,0 +1,34 @@
+<h1 mat-dialog-title>Edit Task</h1>
+<form [formGroup]="taskForm">
+  <div class="form-container">
+    <mat-form-field>
+      <input matInput placeholder="Title" formControlName="title" required>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Description" required formControlName="description"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Expected end date" required disabled formControlName="expectedEndDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker disabled="false"></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Priority" formControlName="priority" required>
+        <mat-option *ngFor="let p of priorityOptions" [(value)]="Priority[p]">{{p}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Status" formControlName="status" required >
+        <mat-option *ngFor="let s of statusOptions" [(value)]="Status[s]">{{s}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-grid-list cols="2" rowHeight="6:1">
+      <div mat-dialog-actions>
+        <mat-grid-tile><button mat-raised-button (click)="onNoClick()">Return</button></mat-grid-tile>
+        <mat-grid-tile><button mat-raised-button color="accent" [mat-dialog-close]="taskForm.value" cdkFocusInitial>Save</button></mat-grid-tile>
+      </div>
+    </mat-grid-list>
+
+  </div>
+</form>

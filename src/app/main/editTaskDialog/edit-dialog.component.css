@@ -1,0 +1,17 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-container > * {
+    width: 100%;
+  }
+  h1{
+    text-align: center;
+    color: #ff4081;
+  }
+  button {
+    width: 100%;
+    margin: 1rem;
+  }
+  
